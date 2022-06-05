@@ -131,6 +131,8 @@ const PromiseAll = (iterator) => {
 }
 ```
 
+`Promise.all()` 的应用场景很容易设想：并发了多个网络请求时，需要等到全部返回成功后再进行接下来的操作。
+
 # Promise.race()
 
 `Promise.race()` 方法同样是将多个 `Promise` 实例包装成一个新的 `Promise` 实例。（参数与 `Promise.all()` 相同处理。）
