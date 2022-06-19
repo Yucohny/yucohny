@@ -138,18 +138,38 @@ new Promise((resolve) => {
 
 # Promise.prototype.catch()
 
-`Promise.prototype.catch` 方法是 `.then(null, rejection)` 的别名，用于指定发生错误时的回调函数。
+`Promise.prototype.catch` 方法等同于 `.then(null, rejection)` 或者 `.then(undefined, rejection)`，用于指定发生错误时的回调函数。
 
-一般来说，不要在 `then` 方法中定义 `rejected` 状态的回调函数（即 `then` 的第二个参数），而应该总是使用 `catch` 方法。
+有了 `catch()` 方法的存在，因此一般不在 `then` 方法中定义 `rejected` 状态的回调函数（即 `then` 的第二个参数），而应该总是使用 `catch` 方法。
 
 与传统 `try/catch` 代码块不同的是，如果没有使用 `catch` 方法指定错误处理的回调函数，`Promise` 对象抛出的错误不会传递到外层代码，即不会有任何反应。但是浏览器会打印出对应的输出，但是并不会终止脚本的运行。
 
-Node 有一个 `unhandledRejection` 事件，专门监听未捕获的 `reject` 错误：
+# Promise.prototype.finally()
+
+`finally()` 方法用于指定不管 Promise 对象最后状态如何，都会执行的操作。
+
+`finally` 方法的回调函数不接受任何参数，这意味着没有办法知道，前面的 Promise 状态到底是 `fulfilled` 还是 `rejected`。这表明，`finally `方法里面的操作，应该是与状态无关的，不依赖于 Promise 的执行结果。
+
+`finally` 方法可以看作是 `then` 方法的语法糖：
 
 ```js
-process.on('unhandledRejection', function (error, p) {
-    console.error(error.stack)
-})
+promise
+.finally(() => {
+  // 语句
+});
+
+// 等同于
+promise
+.then(
+  result => {
+    // 语句
+    return result;
+  },
+  error => {
+    // 语句
+    throw error;
+  }
+);
 ```
 
 # Promise.all()
