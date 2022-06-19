@@ -176,11 +176,13 @@ promise
 
 `Promise.all()` 方法用于将多个 `Promise` 实例包装成一个新的 `Promise` 实例。
 
-`Promise.all()` 接收一个数组作为参数，数组元素都是 `Promise` 对象的实例；如果不是，就会调用 `Promise.resolve()` 方法，将参数转为 `Promise` 实例，再进一步处理。（`Promise.all` 方法的参数不一定是数组，但是必须具有 `Iterator` 接口，且返回的每个成员都是 `Promise` 实例。）
+`Promise.all()` 接收一个数组作为参数，数组元素期望为 `Promise` 对象的实例；如果不是，就会调用 `Promise.resolve()` 方法（见下文），将参数转为 `Promise` 实例，再进一步进行处理。
+
+>  `Promise.all` 方法的参数不一定是数组，但是必须具有 `Iterator` 接口，且返回的每个成员都是 `Promise` 实例。
 
 返回的状态由传入参数的状态决定，分为两种情况。
 
-1. 只有当传入的 `Promise` 实例都是 `fulfilled` 状态，得到的结果才是 `fulfilled` 状态。并且 `Promise` 实例参数的返回值会组成一个数组，传递给新的 `Promise` 实例的回调函数。
+1. 只有当传入的 `Promise` 实例都是 `fulfilled` 状态，得到的新 `Promise` 实例才是 `fulfilled` 状态。并且 `Promise` 实例参数的返回值会组成一个数组，传递给新的 `Promise` 实例的回调函数。
 2. 当传入的 `Promise` 实例存在 `rejected` 状态，则得到的结果就是 `rejected` 状态。并且第一个 `rejected` 状态的实例的返回值会传递给新的 `Promise` 实例的回调函数。
 
 注意：如果作为参数的 `Promise` 实例自身定义了 `catch` 方法，那么它被 `rejected` 时并不会触发 `Promise.all()` 的 `catch` 方法。
@@ -216,6 +218,10 @@ const PromiseAll = (iterator) => {
 `Promise.race()` 方法同样是将多个 `Promise` 实例包装成一个新的 `Promise` 实例。（参数与 `Promise.all()` 相同处理。）
 
 如果 `Promise` 实例参数有一个实例的状态发生改变，则新的 `Promise` 实例的状态也跟着改变，并且率先改变状态的参数的返回值作为新的 `Promise` 实例回调函数的返回值。
+
+# Promise.allSettled()
+
+# Promise.any()
 
 # Promise.resolve()
 
@@ -261,3 +267,7 @@ p.then(s => console.log(s))
 `Promise.reject()` 方法也返回一个新的 `Promise` 实例，状态为 `rejected`。
 
 注意：`Promise.reject()` 方法的参数会原封不动作为 `reject` 的理由变成后续方法的参数。
+
+# Promise.try()
+
+# 应用
