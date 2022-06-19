@@ -65,7 +65,9 @@ new Promise((resolve, reject) => {
 
 # Promise.prototype.then()
 
-`Promise` 实例的 `then` 方法，用来添加回调函数。
+`then` 方法定义在构造函数的原型对象上，因此为每一个实例对象所共享。
+
+`then` 方法的作用是为 `Promise` 实例添加状态改变时的回调函数。
 
 `then` 方法可以接收两个回调函数作为参数。
 
@@ -98,7 +100,41 @@ console.log('Hi!');
 
 > 注意同步异步的先后次序：`Promise` 内的内容是同步执行，而 `then` 方法是异步执行。
 
-`then` 方法返回的是一个新的 `Promise` 实例，因此可以采用链式写法，即 `then` 方法后面再调用另一个 `then` 方法。并将前面的 `then` 方法返回值传入这个新的 `then` 方法作为参数。
+`then` 方法返回的是一个新的 `Promise` 实例，因此可以采用链式写法，即 `then` 方法后面再调用另一个 `then` 方法。这样做将会将前一个 `then` 方法返回值传入这个新的 `then` 方法作为参数：
+
+```js
+new Promise((resolve) => {
+    return resolve(1)
+})
+    .then((number) => {
+        console.log(number)
+        return number + 1
+    })
+    .then((number) => {
+        console.log(number)
+        return number + 1
+    })
+// 1
+// 2
+```
+
+如果前一个 `then` 方法返回的是一个 `Promise` 对象，那么后一个 `then` 方法接收的两个回调函数参数将会为这个新的 `Promise` 对象服务：
+
+```js
+new Promise((resolve) => {
+    resolve('1')
+})
+    .then(() => {
+        return new Promise((resolve) => {
+            resolve(1)
+        })
+    })
+    .then(
+        () => console.log('resolved'),
+        () => console.log('rejected')
+    )
+// resolved
+```
 
 # Promise.prototype.catch()
 
