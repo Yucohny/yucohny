@@ -7,7 +7,10 @@
 `Promise` 对象有以下两个特点：
 
 1. 无法通过外界对 `Promise` 对象造成影响。`Promise` 对象代表一个异步操作，有 3 种状态：进行中 `pending`、已成功 `fulfilled`（也称为 `resolved`） 和已失败 `rejected`。只有异步操作的结果可以决定当前是哪一种状态，任何其他操作都无法改变这个状态。
-2. 一旦状态改变就不会再变，并且任何时候都可以得到这个结果。`Promise` 对象的状态改变只有两种可能：`pending` 变为 `fulfilled`，`pending` 变为 `rejected`。只要这两种情况发生，状态就不会再变。这时就称为已定型 `resolved`（但是很多时候都默认 `resolved` 特指 `fulfilled`）。
+
+> 有一个地方值得注意：对于事件而言，在错过事件发生之后再去监听，将不会得到结果；而 `Promise` 对象改变后再去添加回调函数，我们仍然是能够得到改变后的状态的。
+
+1. 一旦状态改变就不会再变，并且任何时候都可以得到这个结果。`Promise` 对象的状态改变只有两种可能：`pending` 变为 `fulfilled`，`pending` 变为 `rejected`。只要这两种情况发生，状态就不会再变。这时就称为已定型 `resolved`（但是很多时候都默认 `resolved` 特指 `fulfilled`）。
 
 优点：
 
@@ -27,6 +30,12 @@
 
 `resolve` 和 `reject` 是两个函数，由 JS 引擎提供，不需要自己部署。
 
+```js
+new Promise((resolve, reject) => {
+    resolve(1)
+})
+```
+
 ## resolve
 
 `resolve` 函数的作用是，将 `Promise` 对象的状态从 `pending` 变为 `Resolved`。`resolve` 函数在异步操作成功时调用，并将异步操作的结果，作为参数传递出去。
@@ -34,6 +43,25 @@
 ## reject
 
 `reject` 函数的作用是，将 `Promise` 对象的状态从 `pending` 变为 `rejected`。`reject` 函数在异步操作失败时调用，并将异步操作报出的错误，作为参数传递出去。
+
+从语义上而言，我们执行 `resolve` 或 `reject` 参数后，`Promise` 本身的使命就已经完成了，如果后续还有其他的操作，应该添加至 `then` 方法中：
+
+```js
+new Promise((resolve, reject) => {
+    resolve(1)
+    console.log('ok')
+})
+// ok
+```
+
+为了避免上面示例这样的情况，我们可以在 `resolve` 或 `reject` 执行前添加 `return`：
+
+```js
+new Promise((resolve, reject) => {
+    return resolve(1)
+    console.log('ok')
+})
+```
 
 # Promise.prototype.then()
 
