@@ -11,7 +11,7 @@ import wp_readme from '../../note/Webpack/README.md'
 import cn_readme from '../../note/计算机网络/README.md'
 import ImportContent from '../ImportContent'
 
-const {css_data, js_data, ts_data, inter_data, webpack_data, react_data, computer_network_data} = ImportContent
+const {css_data, js_data, ts_data, webpack_data, react_data, computer_network_data} = ImportContent
 
 export default class ContentBody extends Component {
     render() {
@@ -60,13 +60,6 @@ export default class ContentBody extends Component {
                         {
                             react_data.map((item) => {
                                 return <Route key={item[0] === undefined ? "1" : item[0]} path={"/react/" + item[0]} element={<MyMarkdown children={item[1]}/>}/>
-                            })
-                        }
-                    </Route>
-                    <Route path="/interview">
-                        {
-                            inter_data.map(item => {
-                                return <Route key={item[0] === undefined ? "1" : item[0]} path={"/interview/" + item[0]} element={<MyMarkdown children={item[1]}/>}/>
                             })
                         }
                     </Route>

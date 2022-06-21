@@ -12,7 +12,6 @@ const data = [
     ["/react", "React"],
     ["/webpack", "Webpack"],
     ["/computer-network", "计算机网络"],
-    ["/interview", "面经"],
 ]
 
 export default class Header extends Component {

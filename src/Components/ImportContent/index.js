@@ -70,10 +70,6 @@ import ts_var from "../../note/TypeScript/变量声明.md";
 import ts_com from "../../note/TypeScript/编译选项.md";
 import ts_wp from "../../note/TypeScript/使用Webpack打包ts代码.md";
 import ts_interface from "../../note/TypeScript/接口.md";
-import inter1 from '../../note/面经/2021-12-29字节懂车帝一面.md'
-import inter2 from '../../note/面经/2022-1-13阿里朝扬计划蚂蚁技术体验部笔试.md'
-import inter3 from '../../note/面经/2022-1-17阿里朝扬计划蚂蚁技术体验部一面.md'
-import inter4 from '../../note/面经/2022-2-12微软ExploreProgram笔试.md'
 import wp_install_basic from "../../note/Webpack/0.安装 Webpack 与简单使用.md";
 import wp_config from "../../note/Webpack/1.自定义Webpack配置.md";
 import wp_asset from "../../note/Webpack/2.资源模块.md";
@@ -175,13 +171,6 @@ const react_data = [
     ["react-redux", r_redux2]
 ]
 
-const inter_data = [
-    ["1", inter1],
-    ["2", inter2],
-    ["3", inter3],
-    ["4", inter4]
-]
-
 const webpack_data = [
     ["install-basic", wp_install_basic],
     ["webpack-config", wp_config],
@@ -205,7 +194,7 @@ const computer_network_data = [
 ]
 
 const data = {
-    css_data, react_data, webpack_data, inter_data, ts_data, js_data, computer_network_data
+    css_data, react_data, webpack_data, ts_data, js_data, computer_network_data
 }
 
 export default data
