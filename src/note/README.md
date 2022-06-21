@@ -2,7 +2,7 @@
 
 [![GitHub watchers](https://img.shields.io/github/watchers/yucohny/yucohny)](https://github.com/yucohny/yucohny.github.io)[![GitHub stars](https://img.shields.io/github/stars/yucohny/yucohny)](https://github.com/Yucohny/yucohny)
 
-本网站旨在不断学习过程中，完善前端入门相关的知识笔记，同时展现笔者自己的一些笔试与面试经历。
+本网站旨在不断学习过程中，完善前端入门相关的知识笔记。
 
 ## 关于本网站
 
