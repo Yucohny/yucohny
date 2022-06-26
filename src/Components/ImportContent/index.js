@@ -33,7 +33,8 @@ import js_dc from '../../note/JavaScript/15-深拷贝.md'
 import js_it from '../../note/JavaScript/16-迭代器.md'
 import js_absic from '../../note/JavaScript/17-异步操作-基础.md'
 import js_apromise from '../../note/JavaScript/17-异步操作-Promise对象.md'
-import js_agene from '../../note/JavaScript/17-异步操作-Generator函数.md'
+import js_generator_1 from '../../note/JavaScript/17-异步操作-Generator函数的语法.md'
+import js_generator_2 from '../../note/JavaScript/17-异步操作-Generator函数的异步应用.md'
 import js_afunc from '../../note/JavaScript/17-异步操作-async函数.md'
 import js_proxy from '../../note/JavaScript/18-代理与反射.md'
 import r_jsx from '../../note/React/React基础/0-JSX.md'
@@ -126,7 +127,8 @@ const js_data = [
     ["iterator", js_it],
     ["async_basic", js_absic],
     ["async_promise", js_apromise],
-    ["async_generator", js_agene],
+    ["the-basic-grammar-of-generator", js_generator_1],
+    ["the-async-application-of-generator", js_generator_2],
     ["async_func", js_afunc],
     ["proxy", js_proxy]
 ]

@@ -45,10 +45,11 @@ const data3 = [
 ]
 
 const data_asy = [
-    ["async_basic", "异步操作-基础"],
-    ["async_promise", "异步操作-Promise对象"],
-    ["async_generator", "异步操作-Generator函数"],
-    ["async_func", "异步操作-async函数"],
+    ["async_basic", "异步基础"],
+    ["async_promise", "Promise对象"],
+    ["the-basic-grammar-of-generator", "Generator函数的语法"],
+    ["the-async-application-of-generator", "Generator函数的异步应用"],
+    ["async_func", "async函数"],
 ]
 
 const data4 = [
