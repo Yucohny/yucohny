@@ -10,7 +10,7 @@
 
 > 有一个地方值得注意：对于事件而言，在错过事件发生之后再去监听，将不会得到结果；而 `Promise` 对象改变后再去添加回调函数，我们仍然是能够得到改变后的状态的。
 
-1. 一旦状态改变就不会再变，并且任何时候都可以得到这个结果。`Promise` 对象的状态改变只有两种可能：`pending` 变为 `fulfilled`，`pending` 变为 `rejected`。只要这两种情况发生，状态就不会再变。这时就称为已定型 `resolved`（但是很多时候都默认 `resolved` 特指 `fulfilled`）。
+2. 一旦状态改变就不会再变，并且任何时候都可以得到这个结果。`Promise` 对象的状态改变只有两种可能：`pending` 变为 `fulfilled`，`pending` 变为 `rejected`。只要这两种情况发生，状态就不会再变。这时就称为已定型 `resolved`（但是很多时候都默认 `resolved` 特指 `fulfilled`）。
 
 优点：
 
