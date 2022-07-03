@@ -140,11 +140,90 @@ pointer.next('Demo')
 
 # for...of 循环
 
-for...of 循环可以自动遍历 Generator 函数生成的 Iterator 对象，且此时不再需要调用 next 方法。
+## 基本使用
 
-一旦 next 方法的返回对象的 done 属性为 true，则 for...of 循环会终止，且不会返回当前状态。因此 return 语句的返回值不会包含在里面。
+`for...of` 循环可以自动遍历 `Generator` 函数生成的 `Iterator` 对象。一旦 `next` 方法的返回对象的 `done` 属性为 `true`，则 `for...of` 循环会终止，且不会返回当前状态。因此 `return` 语句的返回值不会包含在里面：
 
-除了 for...of 循环，扩展运算符、解构赋值和 Array.from 方法内部调用的都是遍历器接口。这意味着，他们都可以将 Generator 函数返回的 Iterator 对象作为参数。
+```js
+function* numbers () {
+    yield 1
+    yield 2
+    return 3
+    yield 4
+}
+
+for (let x of numbers()) {
+    console.log(x)
+}
+// 1
+// 2
+```
+
+除了 `for...of` 循环，扩展运算符、解构赋值和 `Array.from` 方法内部调用的都是遍历器接口。这意味着，他们都可以将生成器函数返回的 Iterator 对象作为参数。
+
+## 添加 Iterator 接口
+
+普通的对象原生不具备 Iterator 接口，因此无法使用 `for...of` 遍历：
+
+```js
+const obj = {
+    name: 'Yucohny',
+    age: 20
+}
+for (let x of obj) {
+    console.log(x)
+}
+// TypeError: obj is not iterable 
+```
+
+我们可以依照生成器函数的性质，写一个 `objectEntried` 方法，该方法接收一个普通对象，实现为其添加遍历器接口。随后我们便可以使用 `for...of` 方法为包装后的对象遍历了：
+
+```js
+function* objectEntries(obj) {
+    let propKeys = Reflect.ownKeys(obj);
+
+    for (let propKey of propKeys) {
+        yield [propKey, obj[propKey]];
+    }
+}
+
+const obj = {
+    name: 'Yucohny',
+    age: 20
+}
+
+for (let x of objectEntries(obj)) {
+    console.log(x)
+}
+// [ 'name', 'Yucohny' ]
+// [ 'age', 20 ]
+```
+
+加上遍历器接口的另一种写法是，将 Generator 函数加到对象的 `Symbol.iterator` 属性上面：
+
+```js
+function* objectEntries(obj) {
+    let propKeys = Reflect.ownKeys(obj);
+
+    for (let propKey of propKeys) {
+        yield [propKey, obj[propKey]];
+    }
+}
+
+const obj = {
+    name: 'Yucohny',
+    age: 20
+}
+
+obj[Symbol.iterator] = objectEntries
+
+for (let x of objectEntries(obj)) {
+    console.log(x)
+}
+// [ 'name', 'Yucohny' ]
+// [ 'age', 20 ]
+// [ Symbol(Symbol.iterator), [GeneratorFunction: objectEntries] ]
+```
 
 # Generator.prototype.throw()
 
