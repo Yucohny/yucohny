@@ -106,11 +106,37 @@ function* demo() {
 
 # next 方法的参数
 
-yield 语句本身没有返回值，或者说总是返回 undefined。next 方法可以带有一个参数，该参数会被当作上一条 yield 语句的返回值。
+如果 `next` 方法没有携带参数，那么可以认为 `yield` 表达式总是返回 `undefined`：
 
-这个功能有很重要的语法意义，Generator 函数从暂停状态到恢复运行，其上下文状态是不变的。通过 next 方法的参数就有办法在 Generator 函数开始运行后继续向函数体内部注入值。也就是说，可以在 Generator 函数运行的不同阶段从外部向内部注入不同的值，从而调整函数行为。
+```js
+function * func() {
+    const yieldResult = yield 'Test'
+    console.log(yieldResult)
+}
 
-由于 next 方法的参数表示上一条 yield 语句的返回值，所以第一次使用 next 方法时传递参数是无效的。从语义上来讲，第一个 next 方法用来启动遍历器对象，所以本身不用带有参数。
+const pointer = func()
+pointer.next()
+pointer.next()
+// undefined
+```
+
+如果 `next` 方法携带了参数，那么该参数就会背当作上一条 `yield` 语句的返回值：
+
+```js
+function * func() {
+    const yieldResult = yield 'Test'
+    console.log(yieldResult)
+}
+
+const pointer = func()
+pointer.next()
+pointer.next('Demo')
+// Demo
+```
+
+这个功能有很重要的意义：我们可以不断地从函数外部，通过 `next` 方法不断向函数内部，注入不同的值，从而达到调整函数行为的作用。
+
+由于 `next` 方法的参数表示上一条 `yield` 语句的返回值，所以第一次使用 `next` 方法时传递参数是无效的。
 
 # for...of 循环
 
