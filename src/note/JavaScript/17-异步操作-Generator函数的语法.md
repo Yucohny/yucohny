@@ -58,25 +58,9 @@ const obj2 = pointer.next()
 console.log(obj2)
 ```
 
-2. 如果是第一次调用 `next()` 方法，那么函数将会从函数开头运行到第二个 `yield` 命令。
-
-```js
-function * func() {
-    console.log(1)
-    yield console.log(2)
-}
-
-const pointer = func()
-const obj = pointer.next()
-console.log(obj)
-// 1
-// 2
-// { value: undefined, done: false }
-```
-
-3. 调用下一次 `next()` 方法时，将会继续向下执行，直到碰到新的一个 `yield` 命令。
-
-4. 如果没有再遇到新的 `yield` 命令，那么生成器函数将会一直运行到函数结束。如果存在 `return` 语句，那么会将`return`语句后面的表达式的值，作为返回的对象的 `value` 属性值。
+2. `yield` 命令，是先执行 `yield` 语句后的内容，再执行 `yield` 本身（也就是暂缓）。
+2. 第几次调用 `next` 方法，就会从上一次结束的位置开始，执行到下一个 `yield` 语句。
+2. 如果没有再遇到新的 `yield` 命令，那么生成器函数将会一直运行到函数结束。如果存在 `return` 语句，那么会将`return`语句后面的表达式的值，作为返回的对象的 `value` 属性值。
 
 ```js
 function * func() {
@@ -227,7 +211,98 @@ for (let x of objectEntries(obj)) {
 
 # Generator.prototype.throw()
 
-略。
+生成器函数返回的遍历器对象，自身存在 `throw` 方法，用于在函数体外部抛出错误，该错误能够在生成器函数内部捕获：
+
+```js
+function* asyncFunc() {
+    try {
+        yield console.log(1)
+    } catch (e) {
+        console.log('捕获错误：', e)
+    }
+    yield console.log(2)
+}
+
+const iterator = asyncFunc()
+iterator.next()
+iterator.throw('error')
+// 1
+// 捕获错误：error
+// 2
+```
+
+如果此时遍历器对象继续抛出一个错误，由于第一个错误已经被生成器函数内部的 `catch` 捕获，因此新抛出的错误不会再被捕获：
+
+```js
+function* asyncFunc() {
+    try {
+        yield console.log(1)
+    } catch (e) {
+        console.log('捕获错误：', e)
+    }
+    yield console.log(2)
+}
+
+const iterator = asyncFunc()
+iterator.next()
+iterator.throw('error')
+iterator.throw('new error')
+// 1
+// 捕获错误：error
+// 2
+// Uncaught new error
+```
+
+因此，此时我们需要在生成器函数外部捕获该错误：
+
+```js
+function* asyncFunc() {
+    try {
+        yield console.log(1)
+    } catch (e) {
+        console.log('内部捕获：', e)
+    }
+    yield console.log(2)
+}
+
+const iterator = asyncFunc()
+iterator.next()
+try {
+    iterator.throw('error')
+    iterator.throw('new error')
+} catch (e) {
+    console.log('外部捕获：', e)
+}
+// 1
+// 内部捕获： error    
+// 2                   
+// 外部捕获： new error
+```
+
+`throw` 方法接受一个参数，该参数会被 `catch` 语句接收，建议该参数为 `Error` 对象的实例。
+
+我们需要注意不要混淆遍历器对象的 `throw` 方法和全局 `throw` 命令。遍历器对象的 `throw` 方法能够被生成器中的 `catch` 捕获，而全局 `throw` 命令只能被生成器外的 `catch` 捕获：
+
+```js
+function* asyncFunc() {
+    try {
+        yield
+    } catch (e) {
+        console.log('内部捕获：', e)
+    }
+}
+
+const iterator = asyncFunc()
+iterator.next()
+try {
+    throw new Error('error')
+} catch (e) {
+    console.log('外部捕获：', e)
+}
+// 外部捕获： Error: error
+```
+
+要注意的是，`throw` 方法被生成器捕获以后，会附带执行一次 `next` 方法。
 
 # Generator.prototype.return()
 
