@@ -306,21 +306,125 @@ try {
 
 # Generator.prototype.return()
 
-Generator 函数返回的遍历器对象具有一个 return 方法，可以返回给定值，并且终结 Generator 函数的遍历。
+生成器函数返回的遍历器对象具有一个 `return` 方法，可以返回给定值，并且终结生成器的遍历：
 
-如果 return 方法调用时不提供参数，则返回值的 value 属性为 undefined。
+```js
+function *gen() {
+    yield 1
+    yield 2
+}
 
-如果 Generator 函数内部有 try...finally 代码块，那么 return 方法会推迟到 finally 代码块执行完再继续执行。
+const g = gen()
+console.log(g.next())
+console.log(g.return('foo'))
+console.log(g.next())
+// { value: 1, done: false }
+// { value: 'foo', done: true }
+// { value: undefined, done: true }
+```
+
+如果 `return` 方法调用时不提供参数，则返回值的 `value` 属性为 `undefined`。
+
+特殊的，如果生成器函数内部有 `try...finally` 代码块，并且正在执行 `try` 代码块，而 `return` 方法会导致立刻进入 `finally` 代码块，`finally` 代码块执行完后，整个函数才会执行结束：
+
+```js
+function* numbers () {
+  yield 1;
+  try {
+    yield 2;
+    yield 3;
+  } finally {
+    yield 4;
+    yield 5;
+  }
+  yield 6;
+}
+var g = numbers();
+g.next() // { value: 1, done: false }
+g.next() // { value: 2, done: false }
+g.return(7) // { value: 4, done: false }
+g.next() // { value: 5, done: false }
+g.next() // { value: 7, done: true }
+```
 
 # yield* 表达式
 
-如果在 Generator 函数内部调用另一个 Generator 函数，默认情况下是没有效果的。这时就需要使用 yield* 语句，用来在一个 Generator 函数里面执行另一个 Generator 函数。
+`yield*` 表达式用于在一个生成器中执行另一个生成器：
 
-从语法角度上看，如果 yield 命令后面跟的是一个遍历器对象，那么需要在 yield 命令后面加上星号，表明返回的是一个遍历器对象。
+```js
+function *gen1() {
+    yield 1
+    yield 2
+}
 
-在没有 return 语句时，yield* 后面的 Generator 函数不过是 for...of 的一种简写邢师。
+function *gen2() {
+    yield 'a'
+    yield* gen1()
+    yield 'b'
+}
 
-如果 yield* 后面跟着一个数组，由于数组原生支持遍历器，因此就会遍历数组成员。任何数据结构只要有 Iterator 接口，就可以使用 yield* 遍历。
+const g = gen2()
+console.log(g.next())
+console.log(g.next())
+console.log(g.next())
+console.log(g.next())
+// { value: 'a', done: false }
+// { value: 1, done: false }
+// { value: 2, done: false }
+// { value: 'b', done: false }
+```
+
+从语法角度上看，`yield*` 表达式后面跟一个生成器函数，那么此时的 `yield*` 表达式作用等同于在外层生成器函数中部署了一个 `for...of` 循环：
+
+```js
+function *gen1() {
+    yield 1
+    yield 2
+}
+
+function *gen2() {
+    yield 'a'
+    yield* gen1()
+    yield 'b'
+}
+
+// 等同于
+
+function *gen2() {
+    yield 'a'
+    for (let i of gen1()) {
+        yield i
+    }
+    yield 'b'
+}
+```
+
+如果 `yield*` 后面跟着一个具有 Iterator 接口的数据结构，都会遍历数据结构的成员。
+
+我们可以使用 `yield*` 命令取出嵌套数组的所有成员：
+
+```js
+function* iterTree(tree) {
+  if (Array.isArray(tree)) {
+    for(let i = 0; i < tree.length; i++) {
+      yield* iterTree(tree[i]);
+    }
+  } else {
+    yield tree;
+  }
+}
+
+const tree = [ 'a', ['b', 'c'], ['d', 'e'] ];
+
+for(let x of iterTree(tree)) {
+  console.log(x);
+}
+// a
+// b
+// c
+// d
+// e
+```
 
 # 作为对象属性的 Generator 函数
 
