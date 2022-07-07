@@ -428,7 +428,7 @@ for(let x of iterTree(tree)) {
 
 # 作为对象属性的 Generator 函数
 
-
+如果一个对象的属性是生成器函数，可以使用下下面两种格式：
 
 ```js
 let obj = {
@@ -450,24 +450,73 @@ let obj = {
 
 # Generator 函数的 this
 
-Generator 函数返回的是遍历器对象，而不是 this 对象。Generator 函数也不能跟着 new 命令一起使用，否则会报错。
+调用生成器函数会返回一个遍历器，而这个遍历器本身也是生成器函数的实例，因此同样继承了生成器函数 `prototype` 对象上的方法。
 
-如果想让 Generator 函数返回一个正常的对象实例，既可以使用 next 方法，又可以获得正常的 this，可以使用变通的方法：
+如果将生成器函数当作普通的构造函数使用，并不会生效，因为生成器函数返回的是遍历器对象，而不是 `this` 对象。
 
-首先生成一个空对象，使用 call 方法绑定 Generator 函数内部的 this。
+同样，生成器函数不能与 `new` 命令一起使用，否则会报错。
 
-# 含义
+我们可以使用变通的方式，来实现生成器函数返回一个正常的对象实例，既可以使用 `next` 方法，又可以获得构造函数中的 `this`。
 
-## Generator 与状态机
+我们首先生成一个空对象，并使用 `call` 方法绑定生成器函数内部的 `this`。这样当生成器函数调用的时候，这个空对象就变为了生成器函数的实例对象：
 
-## Generator 与协程
+```js
+function* F() {
+  this.a = 1;
+  yield this.b = 2;
+  yield this.c = 3;
+}
+var obj = {};
+var f = F.call(obj);
 
-# 应用
+f.next();  // Object {value: 2, done: false}
+f.next();  // Object {value: 3, done: false}
+f.next();  // Object {value: undefined, done: true}
 
-## 异步操作的同步化表达
+obj.a // 1
+obj.b // 2
+obj.c // 3
+```
 
-## 控制流
+如果我们将这个空对象替换为生成器函数的 `prototype`，那么遍历器对象与生成的实例对象就能够统一：
 
-## 部署 Iterator 接口
+```js
+function* F() {
+  this.a = 1;
+  yield this.b = 2;
+  yield this.c = 3;
+}
+var f = F.call(F.prototype);
 
-## 作为数据结构
+f.next();  // Object {value: 2, done: false}
+f.next();  // Object {value: 3, done: false}
+f.next();  // Object {value: undefined, done: true}
+
+f.a // 1
+f.b // 2
+f.c // 3
+```
+
+我们再包装一层函数，便可以使用 `new` 命令了：
+
+```js
+function* gen() {
+  this.a = 1;
+  yield this.b = 2;
+  yield this.c = 3;
+}
+
+function F() {
+  return gen.call(gen.prototype);
+}
+
+var f = new F();
+
+f.next();  // Object {value: 2, done: false}
+f.next();  // Object {value: 3, done: false}
+f.next();  // Object {value: undefined, done: true}
+
+f.a // 1
+f.b // 2
+f.c // 3
+```
