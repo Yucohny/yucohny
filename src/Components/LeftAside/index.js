@@ -9,7 +9,7 @@ import WebpackLeftBar from "../../Pages/WebpackLeftBar"
 import ComputerNetworkLeftBar from '../../Pages/ComputerNetworkLeftBar'
 import './index.css'
 
-export default class ContentLeftBar extends Component {
+export default class LeftAside extends Component {
     render() {
         return (
             <aside className="leftAside">

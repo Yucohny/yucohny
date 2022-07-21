@@ -12,10 +12,10 @@ import ImportContent from '../ImportContent'
 
 const {css_data, js_data, ts_data, webpack_data, react_data, computer_network_data} = ImportContent
 
-export default class ContentRightBar extends Component {
+export default class RightAside extends Component {
     render() {
         return (
-            <aside className="ContentRightBar">
+            <aside className="rightAside">
                 <div className="rightAsideContent">
                     <Routes>
                         <Route path="/htmlcss">

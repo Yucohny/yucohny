@@ -13,7 +13,7 @@ import ImportContent from '../ImportContent'
 
 const {css_data, js_data, ts_data, webpack_data, react_data, computer_network_data} = ImportContent
 
-export default class ContentBody extends Component {
+export default class Content extends Component {
     render() {
         return (
             <div className="ContentBody">

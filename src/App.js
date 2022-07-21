@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import Header from "./Components/Header"
-import ContentBox from "./Components/ContentBox"
+import Main from "./Components/Main"
 import Footer from "./Components/Footer"
 
 export default class App extends Component {
@@ -8,7 +8,7 @@ export default class App extends Component {
         return (
             <>
                 <Header/>
-                <ContentBox/>
+                <Main/>
                 <Footer/>
             </>
         )
