@@ -4,9 +4,9 @@ import {Menu} from 'antd';
 
 const data = [
     ["unit", "单位"],
-    ["display", "display"],
-    ["position", "position"],
-    ["float", "float"],
+    ["display", "Display"],
+    ["position", "Position"],
+    ["float", "Float"],
     ["boxmodel", "盒模型"],
     ["hide", "隐藏元素"],
     ["centered_horizontally_and_vertically", "水平垂直居中"],
