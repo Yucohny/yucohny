@@ -38,7 +38,7 @@ const MyMarkdownTitle = (props) => {
     return (
         <div className="markdown-title">
             {
-                title.length === 0 ? '' : <b>目录</b>
+                title.length === 0 ? '' : <b style={{fontSize: '16px'}}>目录</b>
             }
             {
                 title.map(item => {
