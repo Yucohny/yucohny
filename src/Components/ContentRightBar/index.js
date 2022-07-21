@@ -15,7 +15,7 @@ const {css_data, js_data, ts_data, webpack_data, react_data, computer_network_da
 export default class ContentRightBar extends Component {
     render() {
         return (
-            <div className="ContentRightBar">
+            <aside className="ContentRightBar">
                 <Routes>
                     <Route path="/htmlcss">
                         <Route index element={<MyMarkdownTitle markdown={hc_readme}/>}/>
@@ -66,7 +66,7 @@ export default class ContentRightBar extends Component {
                         }
                     </Route>
                 </Routes>
-            </div>
+            </aside>
         )
     }
 }

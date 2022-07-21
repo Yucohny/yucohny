@@ -12,19 +12,21 @@ import './index.css'
 export default class ContentLeftBar extends Component {
     render() {
         return (
-            <div className="ContentLeftBar">
-                <Routes>
-                    <Route index element={<IntroductionLeftBar/>}/>
-                    <Route path="/introduction/*" element={<IntroductionLeftBar/>}/>
-                    <Route path="/javascript/*" element={<JSLeftBar/>}/>
-                    <Route path="/htmlcss/*" element={<HCLeftBar/>}/>
-                    <Route path="/webpack/*" element={<WebpackLeftBar/>}/>
-                    <Route path="/react/*" element={<ReactLeftBar/>}/>
-                    <Route path="/dva/*" element={<ReactLeftBar/>}/>
-                    <Route path="/typescript/*" element={<TSLeftBar/>}/>
-                    <Route path="/computer-network/*" element={<ComputerNetworkLeftBar/>}/>
-                </Routes>
-            </div>
+            <aside className="leftAside">
+                <div className="leftAsideContent">
+                    <Routes>
+                        <Route index element={<IntroductionLeftBar/>}/>
+                        <Route path="/introduction/*" element={<IntroductionLeftBar/>}/>
+                        <Route path="/javascript/*" element={<JSLeftBar/>}/>
+                        <Route path="/htmlcss/*" element={<HCLeftBar/>}/>
+                        <Route path="/webpack/*" element={<WebpackLeftBar/>}/>
+                        <Route path="/react/*" element={<ReactLeftBar/>}/>
+                        <Route path="/dva/*" element={<ReactLeftBar/>}/>
+                        <Route path="/typescript/*" element={<TSLeftBar/>}/>
+                        <Route path="/computer-network/*" element={<ComputerNetworkLeftBar/>}/>
+                    </Routes>
+                </div>
+            </aside>
         )
     }
 }

@@ -4,9 +4,9 @@ import './index.css'
 export default class Footer extends Component {
     render() {
         return (
-            <div className="footer">
+            <footer className="footer">
                 Copyright &copy; 2022 Yucohny
-            </div>
+            </footer>
         )
     }
 }

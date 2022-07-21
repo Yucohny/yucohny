@@ -15,19 +15,17 @@ const data = [
 export default class WebpackLeftBar extends Component {
     render() {
         return (
-            <div style={{width: '100%'}}>
-                <Menu mode="vertical" className="leftbar-menu">
-                    {
-                        data.map(item => {
-                            return (
-                                <Menu.Item key={item[0]}>
-                                    <MyNavLink to={"/webpack/" + item[0]} name={item[1]}/>
-                                </Menu.Item>
-                            )
-                        })
-                    }
-                </Menu>
-            </div>
+            <Menu mode="vertical">
+                {
+                    data.map(item => {
+                        return (
+                            <Menu.Item key={item[0]}>
+                                <MyNavLink to={"/webpack/" + item[0]} name={item[1]}/>
+                            </Menu.Item>
+                        )
+                    })
+                }
+            </Menu>
         );
     }
 }

@@ -1,6 +1,5 @@
 .ContentBody {
-    float: left;
-    margin-top: 20px;
-    margin-left: 3%;
-    width: 50%;
+    height: auto;
+    margin-top: 30px;
+    flex: 1;
 }

@@ -1,9 +1,8 @@
 import React, {Component} from "react"
 import MyNavLink from "../../Components/MyNavLink";
 import {Menu} from 'antd';
-import './index.css'
 
-const { SubMenu } = Menu;
+const {SubMenu} = Menu;
 
 const data_basic = [
     ["jsx", "JSX"],
@@ -48,57 +47,55 @@ const redux = [
 export default class ReactLeftBar extends Component {
     render() {
         return (
-            <div style={{width: "100%"}}>
-                <Menu mode="vertical" className="leftbar-menu">
-                    <SubMenu title="React 基础">
-                        {
-                            data_basic.map(item => {
-                                return (
-                                    <Menu.Item key={item[0]}>
-                                        <MyNavLink to={"/react/" + item[0]} name={item[1]}/>
-                                    </Menu.Item>
-                                )
-                            })
-                        }
-                    </SubMenu>
-                    <SubMenu title="React 进阶">
-                        {
-                            data_more.map(item => {
-                                return (
-                                    <Menu.Item key={item[0]}>
-                                        <MyNavLink to={"/react/" + item[0]} name={item[1]}/>
-                                    </Menu.Item>
-                                )
-                            })
-                        }
-                    </SubMenu>
-                    <SubMenu title="React-Router">
-                        {
-                            router.map(item => {
-                                return (
-                                    <Menu.Item key={item[0]}>
-                                        <MyNavLink to={"/react/" + item[0]} name={item[1]}/>
-                                    </Menu.Item>
-                                )
-                            })
-                        }
-                    </SubMenu>
-                    <SubMenu title="Redux">
-                        {
-                            redux.map(item => {
-                                return (
-                                    <Menu.Item key={item[0]}>
-                                        <MyNavLink to={"/react/" + item[0]} name={item[1]}/>
-                                    </Menu.Item>
-                                )
-                            })
-                        }
-                    </SubMenu>
-                    <Menu.Item key="dva">
-                        <MyNavLink to="/dva" name="Dva.js"/>
-                    </Menu.Item>
-                </Menu>
-            </div>
+            <Menu mode="vertical">
+                <SubMenu title="React 基础">
+                    {
+                        data_basic.map(item => {
+                            return (
+                                <Menu.Item key={item[0]}>
+                                    <MyNavLink to={"/react/" + item[0]} name={item[1]}/>
+                                </Menu.Item>
+                            )
+                        })
+                    }
+                </SubMenu>
+                <SubMenu title="React 进阶">
+                    {
+                        data_more.map(item => {
+                            return (
+                                <Menu.Item key={item[0]}>
+                                    <MyNavLink to={"/react/" + item[0]} name={item[1]}/>
+                                </Menu.Item>
+                            )
+                        })
+                    }
+                </SubMenu>
+                <SubMenu title="React-Router">
+                    {
+                        router.map(item => {
+                            return (
+                                <Menu.Item key={item[0]}>
+                                    <MyNavLink to={"/react/" + item[0]} name={item[1]}/>
+                                </Menu.Item>
+                            )
+                        })
+                    }
+                </SubMenu>
+                <SubMenu title="Redux">
+                    {
+                        redux.map(item => {
+                            return (
+                                <Menu.Item key={item[0]}>
+                                    <MyNavLink to={"/react/" + item[0]} name={item[1]}/>
+                                </Menu.Item>
+                            )
+                        })
+                    }
+                </SubMenu>
+                <Menu.Item key="dva">
+                    <MyNavLink to="/dva" name="Dva.js"/>
+                </Menu.Item>
+            </Menu>
         );
     }
 }
