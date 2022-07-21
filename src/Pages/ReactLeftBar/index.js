@@ -1,4 +1,4 @@
-import React, {Component} from "react"
+import React from "react"
 import MyNavLink from "../../Components/MyNavLink";
 import {Menu} from 'antd';
 
@@ -44,58 +44,58 @@ const redux = [
     ["react-redux", "React-Redux"]
 ]
 
-export default class ReactLeftBar extends Component {
-    render() {
-        return (
-            <Menu mode="vertical">
-                <SubMenu title="React 基础">
-                    {
-                        data_basic.map(item => {
-                            return (
-                                <Menu.Item key={item[0]}>
-                                    <MyNavLink to={"/react/" + item[0]} name={item[1]}/>
-                                </Menu.Item>
-                            )
-                        })
-                    }
-                </SubMenu>
-                <SubMenu title="React 进阶">
-                    {
-                        data_more.map(item => {
-                            return (
-                                <Menu.Item key={item[0]}>
-                                    <MyNavLink to={"/react/" + item[0]} name={item[1]}/>
-                                </Menu.Item>
-                            )
-                        })
-                    }
-                </SubMenu>
-                <SubMenu title="React-Router">
-                    {
-                        router.map(item => {
-                            return (
-                                <Menu.Item key={item[0]}>
-                                    <MyNavLink to={"/react/" + item[0]} name={item[1]}/>
-                                </Menu.Item>
-                            )
-                        })
-                    }
-                </SubMenu>
-                <SubMenu title="Redux">
-                    {
-                        redux.map(item => {
-                            return (
-                                <Menu.Item key={item[0]}>
-                                    <MyNavLink to={"/react/" + item[0]} name={item[1]}/>
-                                </Menu.Item>
-                            )
-                        })
-                    }
-                </SubMenu>
-                <Menu.Item key="dva">
-                    <MyNavLink to="/dva" name="Dva.js"/>
-                </Menu.Item>
-            </Menu>
-        );
-    }
+const ReactLeftBar = () => {
+    return (
+        <Menu mode="vertical">
+            <SubMenu title="React 基础">
+                {
+                    data_basic.map(item => {
+                        return (
+                            <Menu.Item key={item[0]}>
+                                <MyNavLink to={"/react/" + item[0]} name={item[1]}/>
+                            </Menu.Item>
+                        )
+                    })
+                }
+            </SubMenu>
+            <SubMenu title="React 进阶">
+                {
+                    data_more.map(item => {
+                        return (
+                            <Menu.Item key={item[0]}>
+                                <MyNavLink to={"/react/" + item[0]} name={item[1]}/>
+                            </Menu.Item>
+                        )
+                    })
+                }
+            </SubMenu>
+            <SubMenu title="React-Router">
+                {
+                    router.map(item => {
+                        return (
+                            <Menu.Item key={item[0]}>
+                                <MyNavLink to={"/react/" + item[0]} name={item[1]}/>
+                            </Menu.Item>
+                        )
+                    })
+                }
+            </SubMenu>
+            <SubMenu title="Redux">
+                {
+                    redux.map(item => {
+                        return (
+                            <Menu.Item key={item[0]}>
+                                <MyNavLink to={"/react/" + item[0]} name={item[1]}/>
+                            </Menu.Item>
+                        )
+                    })
+                }
+            </SubMenu>
+            <Menu.Item key="dva">
+                <MyNavLink to="/dva" name="Dva.js"/>
+            </Menu.Item>
+        </Menu>
+    );
 }
+
+export default ReactLeftBar

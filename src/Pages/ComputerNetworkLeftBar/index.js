@@ -1,4 +1,4 @@
-import React, {Component} from "react"
+import React from "react"
 import MyNavLink from "../../Components/MyNavLink";
 import {Menu} from 'antd';
 
@@ -14,20 +14,20 @@ const data = [
     ["cors", "CORS 跨域资源共享"]
 ]
 
-export default class ComputerNetworkLeftBar extends Component {
-    render() {
-        return (
-            <Menu mode="vertical">
-                {
-                    data.map(item => {
-                        return (
-                            <Menu.Item key={item[0]}>
-                                <MyNavLink to={"/computer-network/" + item[0]} name={item[1]}/>
-                            </Menu.Item>
-                        )
-                    })
-                }
-            </Menu>
-        );
-    }
+const ComputerNetworkLeftBar = () => {
+    return (
+        <Menu mode="vertical">
+            {
+                data.map(item => {
+                    return (
+                        <Menu.Item key={item[0]}>
+                            <MyNavLink to={"/computer-network/" + item[0]} name={item[1]}/>
+                        </Menu.Item>
+                    )
+                })
+            }
+        </Menu>
+    );
 }
+
+export default ComputerNetworkLeftBar

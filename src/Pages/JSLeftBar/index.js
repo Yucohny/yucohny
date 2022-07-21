@@ -1,4 +1,4 @@
-import React, {Component} from "react"
+import React from "react"
 import MyNavLink from "../../Components/MyNavLink";
 import {Menu} from 'antd';
 
@@ -55,12 +55,21 @@ const data4 = [
     ["proxy", "代理与反射"]
 ]
 
-export default class JSLeftBar extends Component {
-    render() {
-        return (
-            <Menu mode="vertical">
+const JSLeftBar = () => {
+    return (
+        <Menu mode="vertical">
+            {
+                data1.map(item => {
+                    return (
+                        <Menu.Item key={item[0]}>
+                            <MyNavLink to={"/javascript/" + item[0]} name={item[1]}/>
+                        </Menu.Item>
+                    )
+                })
+            }
+            <SubMenu key="1" title="面向对象">
                 {
-                    data1.map(item => {
+                    data_obj.map(item => {
                         return (
                             <Menu.Item key={item[0]}>
                                 <MyNavLink to={"/javascript/" + item[0]} name={item[1]}/>
@@ -68,19 +77,19 @@ export default class JSLeftBar extends Component {
                         )
                     })
                 }
-                <SubMenu key="1" title="面向对象">
-                    {
-                        data_obj.map(item => {
-                            return (
-                                <Menu.Item key={item[0]}>
-                                    <MyNavLink to={"/javascript/" + item[0]} name={item[1]}/>
-                                </Menu.Item>
-                            )
-                        })
-                    }
-                </SubMenu>
+            </SubMenu>
+            {
+                data2.map(item => {
+                    return (
+                        <Menu.Item key={item[0]}>
+                            <MyNavLink to={"/javascript/" + item[0]} name={item[1]}/>
+                        </Menu.Item>
+                    )
+                })
+            }
+            <SubMenu key="2" title="标准库">
                 {
-                    data2.map(item => {
+                    data_std.map(item => {
                         return (
                             <Menu.Item key={item[0]}>
                                 <MyNavLink to={"/javascript/" + item[0]} name={item[1]}/>
@@ -88,19 +97,19 @@ export default class JSLeftBar extends Component {
                         )
                     })
                 }
-                <SubMenu key="2" title="标准库">
-                    {
-                        data_std.map(item => {
-                            return (
-                                <Menu.Item key={item[0]}>
-                                    <MyNavLink to={"/javascript/" + item[0]} name={item[1]}/>
-                                </Menu.Item>
-                            )
-                        })
-                    }
-                </SubMenu>
+            </SubMenu>
+            {
+                data3.map(item => {
+                    return (
+                        <Menu.Item key={item[0]}>
+                            <MyNavLink to={"/javascript/" + item[0]} name={item[1]}/>
+                        </Menu.Item>
+                    )
+                })
+            }
+            <SubMenu key="3" title="异步操作">
                 {
-                    data3.map(item => {
+                    data_asy.map(item => {
                         return (
                             <Menu.Item key={item[0]}>
                                 <MyNavLink to={"/javascript/" + item[0]} name={item[1]}/>
@@ -108,27 +117,18 @@ export default class JSLeftBar extends Component {
                         )
                     })
                 }
-                <SubMenu key="3" title="异步操作">
-                    {
-                        data_asy.map(item => {
-                            return (
-                                <Menu.Item key={item[0]}>
-                                    <MyNavLink to={"/javascript/" + item[0]} name={item[1]}/>
-                                </Menu.Item>
-                            )
-                        })
-                    }
-                </SubMenu>
-                {
-                    data4.map(item => {
-                        return (
-                            <Menu.Item key={item[0]}>
-                                <MyNavLink to={"/javascript/" + item[0]} name={item[1]}/>
-                            </Menu.Item>
-                        )
-                    })
-                }
-            </Menu>
-        );
-    }
+            </SubMenu>
+            {
+                data4.map(item => {
+                    return (
+                        <Menu.Item key={item[0]}>
+                            <MyNavLink to={"/javascript/" + item[0]} name={item[1]}/>
+                        </Menu.Item>
+                    )
+                })
+            }
+        </Menu>
+    );
 }
+
+export default JSLeftBar
