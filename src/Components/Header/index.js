@@ -17,7 +17,7 @@ const data = [
 export default class Header extends Component {
     render() {
         return (
-            <div className="Header">
+            <header className="Header">
                 <Menu mode="horizontal" className="menu">
                     {
                         data.map(item => {
@@ -29,7 +29,7 @@ export default class Header extends Component {
                         })
                     }
                 </Menu>
-            </div>
+            </header>
         )
     }
 }
