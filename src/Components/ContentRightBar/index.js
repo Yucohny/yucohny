@@ -16,56 +16,58 @@ export default class ContentRightBar extends Component {
     render() {
         return (
             <aside className="ContentRightBar">
-                <Routes>
-                    <Route path="/htmlcss">
-                        <Route index element={<MyMarkdownTitle markdown={hc_readme}/>}/>
-                        {
-                            css_data.map((item) => {
-                                return <Route key={item[0] === undefined ? "1" : item[0]} path={"/htmlcss/" + item[0]} element={<MyMarkdownTitle markdown={item[1]}/>}/>
-                            })
-                        }
-                    </Route>
-                    <Route path="/javascript">
-                        <Route index element={<MyMarkdownTitle markdown={js_readme}/>}/>
-                        {
-                            js_data.map((item) => {
-                                return <Route key={item[0] === undefined ? "1" : item[0]} path={"/javascript/" + item[0]} element={<MyMarkdownTitle markdown={item[1]}/>}/>
-                            })
-                        }
-                    </Route>
-                    <Route path="/typescript">
-                        <Route index element={<MyMarkdownTitle markdown={ts_readme}/>}/>
-                        {
-                            ts_data.map((item) => {
-                                return <Route key={item[0] === undefined ? "1" : item[0]} path={"/typescript/" + item[0]} element={<MyMarkdownTitle markdown={item[1]}/>}/>
-                            })
-                        }
-                    </Route>
-                    <Route path="/webpack">
-                        <Route index element={<MyMarkdownTitle markdown={wp_readme}/>}/>
-                        {
-                            webpack_data.map((item) => {
-                                return <Route key={item[0] === undefined ? "1" : item[0]} path={"/webpack/" + item[0]} element={<MyMarkdownTitle markdown={item[1]}/>}/>
-                            })
-                        }
-                    </Route>
-                    <Route path="/react">
-                        <Route index element={<MyMarkdownTitle markdown={r_readme}/>}/>
-                        {
-                            react_data.map((item) => {
-                                return <Route key={item[0] === undefined ? "1" : item[0]} path={"/react/" + item[0]} element={<MyMarkdownTitle markdown={item[1]}/>}/>
-                            })
-                        }
-                    </Route>
-                    <Route path="/computer-network">
-                        <Route index element={<MyMarkdownTitle markdown={cn_readme}/>}/>
-                        {
-                            computer_network_data.map(item => {
-                                return <Route key={item[0] === undefined ? "1" : item[0]} path={"/computer-network/" + item[0]} element={<MyMarkdownTitle markdown={item[1]}/>}/>
-                            })
-                        }
-                    </Route>
-                </Routes>
+                <div className="rightAsideContent">
+                    <Routes>
+                        <Route path="/htmlcss">
+                            <Route index element={<MyMarkdownTitle markdown={hc_readme}/>}/>
+                            {
+                                css_data.map((item) => {
+                                    return <Route key={item[0] === undefined ? "1" : item[0]} path={"/htmlcss/" + item[0]} element={<MyMarkdownTitle markdown={item[1]}/>}/>
+                                })
+                            }
+                        </Route>
+                        <Route path="/javascript">
+                            <Route index element={<MyMarkdownTitle markdown={js_readme}/>}/>
+                            {
+                                js_data.map((item) => {
+                                    return <Route key={item[0] === undefined ? "1" : item[0]} path={"/javascript/" + item[0]} element={<MyMarkdownTitle markdown={item[1]}/>}/>
+                                })
+                            }
+                        </Route>
+                        <Route path="/typescript">
+                            <Route index element={<MyMarkdownTitle markdown={ts_readme}/>}/>
+                            {
+                                ts_data.map((item) => {
+                                    return <Route key={item[0] === undefined ? "1" : item[0]} path={"/typescript/" + item[0]} element={<MyMarkdownTitle markdown={item[1]}/>}/>
+                                })
+                            }
+                        </Route>
+                        <Route path="/webpack">
+                            <Route index element={<MyMarkdownTitle markdown={wp_readme}/>}/>
+                            {
+                                webpack_data.map((item) => {
+                                    return <Route key={item[0] === undefined ? "1" : item[0]} path={"/webpack/" + item[0]} element={<MyMarkdownTitle markdown={item[1]}/>}/>
+                                })
+                            }
+                        </Route>
+                        <Route path="/react">
+                            <Route index element={<MyMarkdownTitle markdown={r_readme}/>}/>
+                            {
+                                react_data.map((item) => {
+                                    return <Route key={item[0] === undefined ? "1" : item[0]} path={"/react/" + item[0]} element={<MyMarkdownTitle markdown={item[1]}/>}/>
+                                })
+                            }
+                        </Route>
+                        <Route path="/computer-network">
+                            <Route index element={<MyMarkdownTitle markdown={cn_readme}/>}/>
+                            {
+                                computer_network_data.map(item => {
+                                    return <Route key={item[0] === undefined ? "1" : item[0]} path={"/computer-network/" + item[0]} element={<MyMarkdownTitle markdown={item[1]}/>}/>
+                                })
+                            }
+                        </Route>
+                    </Routes>
+                </div>
             </aside>
         )
     }
