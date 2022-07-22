@@ -1,5 +1,6 @@
 import React from 'react'
 import JSLeftBar from "../../Pages/JSLeftBar"
+import HtmlLeftBar from '../../Pages/HtmlLeftBar'
 import HCLeftBar from "../../Pages/HCLeftBar"
 import ReactLeftBar from "../../Pages/ReactLeftBar"
 import TSLeftBar from "../../Pages/TSLeftBar"
@@ -10,6 +11,10 @@ export default [
     {
         path: '/javascript/*',
         element: <JSLeftBar/>
+    },
+    {
+        path: '/html/*',
+        element: <HtmlLeftBar/>
     },
     {
         path: '/htmlcss/*',

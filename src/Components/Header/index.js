@@ -6,6 +6,7 @@ import 'antd/dist/antd.less'
 
 const data = [
     ["/introduction", "简介"],
+    ['/html', 'HTML'],
     ["/htmlcss", "HTML/CSS"],
     ["/javascript", "JavaScript"],
     ["/typescript", "TypeScript"],
