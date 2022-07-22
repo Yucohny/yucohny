@@ -1,5 +1,5 @@
 import React from "react"
-import MyMarkdownTitle from "../../Components/MyMarkdownTitle";
+import MyMarkdown from "../../Components/MyMarkdown";
 import hc_readme from '../../note/CSS/README.md'
 import js_readme from '../../note/JavaScript/README.md'
 import r_readme from '../../note/React/README.md'
@@ -16,13 +16,13 @@ export default [
         children: [
             {
                 path: '/htmlcss',
-                element: <MyMarkdownTitle markdown={hc_readme}/>
+                element: <MyMarkdown children={hc_readme}/>
             },
             ...css_data.map(item => {
                 return {
                     key: item[0],
                     path: item[0],
-                    element: <MyMarkdownTitle markdown={item[1]}/>
+                    element: <MyMarkdown children={item[1]}/>
                 }
             })
         ]
@@ -32,13 +32,13 @@ export default [
         children: [
             {
                 path: '/javascript',
-                element: <MyMarkdownTitle markdown={js_readme}/>
+                element: <MyMarkdown children={js_readme}/>
             },
             ...js_data.map(item => {
                 return {
                     key: item[0],
                     path: item[0],
-                    element: <MyMarkdownTitle markdown={item[1]}/>
+                    element: <MyMarkdown children={item[1]}/>
                 }
             })
         ]
@@ -48,13 +48,13 @@ export default [
         children: [
             {
                 path: '/typescript',
-                element: <MyMarkdownTitle markdown={ts_readme}/>
+                element: <MyMarkdown children={ts_readme}/>
             },
             ...ts_data.map(item => {
                 return {
                     key: item[0],
                     path: item[0],
-                    element: <MyMarkdownTitle markdown={item[1]}/>
+                    element: <MyMarkdown children={item[1]}/>
                 }
             })
         ]
@@ -64,13 +64,13 @@ export default [
         children: [
             {
                 path: '/webpack',
-                element: <MyMarkdownTitle markdown={wp_readme}/>
+                element: <MyMarkdown children={wp_readme}/>
             },
             ...webpack_data.map(item => {
                 return {
                     key: item[0],
                     path: item[0],
-                    element: <MyMarkdownTitle markdown={item[1]}/>
+                    element: <MyMarkdown children={item[1]}/>
                 }
             })
         ]
@@ -80,13 +80,13 @@ export default [
         children: [
             {
                 path: '/react',
-                element: <MyMarkdownTitle markdown={r_readme}/>
+                element: <MyMarkdown children={r_readme}/>
             },
             ...react_data.map(item => {
                 return {
                     key: item[0],
                     path: item[0],
-                    element: <MyMarkdownTitle markdown={item[1]}/>
+                    element: <MyMarkdown children={item[1]}/>
                 }
             })
         ]
@@ -96,13 +96,13 @@ export default [
         children: [
             {
                 path: '/computer-network',
-                element: <MyMarkdownTitle markdown={cn_readme}/>
+                element: <MyMarkdown children={cn_readme}/>
             },
             ...computer_network_data.map(item => {
                 return {
                     key: item[0],
                     path: item[0],
-                    element: <MyMarkdownTitle markdown={item[1]}/>
+                    element: <MyMarkdown children={item[1]}/>
                 }
             })
         ]
