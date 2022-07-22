@@ -1,16 +1,22 @@
-import React from "react"
-import MyMarkdown from "../../Components/MyMarkdown";
+import React from 'react'
+import {Navigate} from 'react-router-dom'
+import MyMarkdown from '../../Components/MyMarkdown'
+import ImportContent from '../../Components/ImportContent'
+import Introduction from '../../note/README.md'
 import hc_readme from '../../note/CSS/README.md'
 import js_readme from '../../note/JavaScript/README.md'
 import r_readme from '../../note/React/README.md'
 import ts_readme from '../../note/TypeScript/README.md'
 import wp_readme from '../../note/Webpack/README.md'
 import cn_readme from '../../note/计算机网络/README.md'
-import ImportContent from '../../Components/ImportContent'
 
 const {css_data, js_data, ts_data, webpack_data, react_data, computer_network_data} = ImportContent
 
 export default [
+    {
+        path: '/introduction',
+        element: <MyMarkdown children={Introduction}/>
+    },
     {
         path: '/htmlcss',
         children: [
@@ -106,5 +112,9 @@ export default [
                 }
             })
         ]
+    },
+    {
+        path: '/',
+        element: <Navigate to='/introduction'/>
     }
 ]
