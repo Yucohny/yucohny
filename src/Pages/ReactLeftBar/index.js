@@ -38,7 +38,8 @@ const data_more = [
 const router = [
     ["general", "概述"],
     ["basic", "基本使用"],
-    ["redirect", "重定向"]
+    ["redirect", "重定向"],
+    ["params", "路由参数"]
 ]
 
 const redux = [
