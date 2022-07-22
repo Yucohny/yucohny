@@ -35,10 +35,10 @@ export default [
         ]
     },
     {
-        path: '/htmlcss',
+        path: '/css',
         children: [
             {
-                path: '/htmlcss',
+                path: '/css',
                 element: <MyMarkdown children={css_readme}/>
             },
             ...css_data.map(item => {

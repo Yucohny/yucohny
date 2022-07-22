@@ -1,7 +1,7 @@
 import React from 'react'
 import JSLeftBar from "../../Pages/JSLeftBar"
 import HtmlLeftBar from '../../Pages/HtmlLeftBar'
-import HCLeftBar from "../../Pages/HCLeftBar"
+import CssLeftBar from "../../Pages/CssLeftBar"
 import ReactLeftBar from "../../Pages/ReactLeftBar"
 import TSLeftBar from "../../Pages/TSLeftBar"
 import WebpackLeftBar from "../../Pages/WebpackLeftBar"
@@ -17,8 +17,8 @@ export default [
         element: <HtmlLeftBar/>
     },
     {
-        path: '/htmlcss/*',
-        element: <HCLeftBar/>
+        path: '/css/*',
+        element: <CssLeftBar/>
     },
     {
         path: '/webpack/*',

@@ -14,14 +14,14 @@ const data = [
     ["bfc", "BFC"]
 ]
 
-const HCLeftBar = () => {
+const CssLeftBar = () => {
     return (
         <Menu mode="vertical">
             {
                 data.map(item => {
                     return (
                         <Menu.Item key={item[0]}>
-                            <MyNavLink to={"/htmlcss/" + item[0]} name={item[1]}/>
+                            <MyNavLink to={"/css/" + item[0]} name={item[1]}/>
                         </Menu.Item>
                     )
                 })
@@ -30,4 +30,4 @@ const HCLeftBar = () => {
     );
 }
 
-export default HCLeftBar
+export default CssLeftBar
