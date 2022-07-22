@@ -62,7 +62,9 @@ import r_diff from '../../note/React/React进阶/14-Diff 算法.md'
 import r_rp from '../../note/React/React进阶/15-RenderProps.md'
 import r_wc from '../../note/React/React进阶/16-WebComponents.md'
 import r_hook from '../../note/React/React进阶/17-Hook.md'
-import r_router from '../../note/React/React进阶：React-Router/route.md'
+import rr_basic from '../../note/React/React-Router/概述.md'
+import rr_use from '../../note/React/React-Router/路由的基本使用.md'
+import rr_redirect from '../../note/React/React-Router/重定向.md'
 import r_redux from '../../note/React/React进阶：Redux&React-Redux/1-Redux.md'
 import r_redux2 from '../../note/React/React进阶：Redux&React-Redux/2-React-Redux.md'
 import ts_env from "../../note/TypeScript/开发环境搭建.md";
@@ -168,7 +170,9 @@ const react_data = [
     ["diff", r_diff],
     ["render-props", r_rp],
     ["web-components", r_wc],
-    ["router", r_router],
+    ["general", rr_basic],
+    ["basic", rr_use],
+    ['redirect', rr_redirect],
     ["redux", r_redux],
     ["react-redux", r_redux2]
 ]
