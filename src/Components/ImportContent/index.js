@@ -92,6 +92,7 @@ import cn_sop from '../../note/计算机网络/6.同源策略.md'
 import cn_xss from '../../note/计算机网络/7.跨站脚本攻击.md'
 import cn_csrf from '../../note/计算机网络/8.跨站请求伪造.md'
 import cn_cors from '../../note/计算机网络/9.跨域资源共享.md'
+import cn_http1 from '../../note/计算机网络/10.HTTP1.md'
 
 const html_data = [
     ["iframe", html_iframe]
@@ -205,7 +206,8 @@ const computer_network_data = [
     ["same-origin-policy", cn_sop],
     ["xss", cn_xss],
     ["csrf", cn_csrf],
-    ["cors", cn_cors]
+    ["cors", cn_cors],
+    ["http1", cn_http1]
 ]
 
 const data = {
