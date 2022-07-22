@@ -1,26 +1,17 @@
-import React from "react"
-import {Route, Routes} from "react-router-dom"
-import JSLeftBar from "../../Pages/JSLeftBar"
-import HCLeftBar from "../../Pages/HCLeftBar"
-import ReactLeftBar from "../../Pages/ReactLeftBar"
-import TSLeftBar from "../../Pages/TSLeftBar"
-import WebpackLeftBar from "../../Pages/WebpackLeftBar"
-import ComputerNetworkLeftBar from '../../Pages/ComputerNetworkLeftBar'
+import React from 'react'
+import {useRoutes} from 'react-router-dom'
+import LeftAsideRoutes from '../../Routes/LeftAsideRoutes'
 import './index.css'
 
 const LeftAside = () => {
+    const elements = useRoutes(LeftAsideRoutes)
+
     return (
         <aside className="leftAside">
             <div className="leftAsideContent">
-                <Routes>
-                    <Route path="/javascript/*" element={<JSLeftBar/>}/>
-                    <Route path="/htmlcss/*" element={<HCLeftBar/>}/>
-                    <Route path="/webpack/*" element={<WebpackLeftBar/>}/>
-                    <Route path="/react/*" element={<ReactLeftBar/>}/>
-                    <Route path="/dva/*" element={<ReactLeftBar/>}/>
-                    <Route path="/typescript/*" element={<TSLeftBar/>}/>
-                    <Route path="/computer-network/*" element={<ComputerNetworkLeftBar/>}/>
-                </Routes>
+                {
+                    elements
+                }
             </div>
         </aside>
     )
