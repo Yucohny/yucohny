@@ -1,6 +1,6 @@
 ## 欢迎来到「一名前端攻城师的个人修养」
 
-[![GitHub watchers](https://img.shields.io/github/watchers/yucohny/yucohny)](https://github.com/yucohny/yucohny.github.io)[![GitHub stars](https://img.shields.io/github/stars/yucohny/yucohny)](https://github.com/Yucohny/yucohny)
+[![GitHub watchers](https://img.shields.io/github/watchers/yucohny/yucohny)](https://github.com/yucohny/yucohny)[![GitHub stars](https://img.shields.io/github/stars/yucohny/yucohny)](https://github.com/Yucohny/yucohny)
 
 本网站旨在不断学习过程中，完善前端入门相关的知识笔记。
 
