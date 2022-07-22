@@ -39,7 +39,8 @@ const router = [
     ["general", "概述"],
     ["basic", "基本使用"],
     ["redirect", "重定向"],
-    ["params", "路由参数"]
+    ["params", "路由参数"],
+    ["navigate", "编程式路由"]
 ]
 
 const redux = [
